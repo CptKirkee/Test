@@ -5,15 +5,14 @@ const openLabelledId = "open-labelled";
 browser.menus.create({
   id: openLabelledId,
   title: "Open",
-  contexts: ["link"]
+  contexts: ["selection"]
 });
 
 browser.menus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === openLabelledId) {
-  function openInNewTab(url) {
-  var win = window.open(url, '_blank');
-  win.focus();
-}
+    browser.tabs.create({
+      url: "http://example.com"
+    });
   }
 });
 
